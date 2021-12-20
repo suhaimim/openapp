@@ -34,6 +34,13 @@ At this stage, you should be able to run the apps and login by doing this
 
 However, lets continue with .env sendmail configuration (your own smtp settings)
 
+To add a Teams features, run these steps;
+
+- ~/Projects/openapp$ php artisan jetstream:install livewire --teams
+- ~/Projects/openapp$ npm install && npm run dev
+- ~/Projects/openapp$ php artisan vendor:publish --tag=jetstream-views
+- ~/Projects/openapp$ php artisan migrate:refresh
+
 
 
 ### E-Mail to suhaimi.masri@gmail.com 
