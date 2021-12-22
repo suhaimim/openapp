@@ -46,7 +46,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);        
 
-        $user->createTeam($user);
+        $this->createTeam($user); // create self-owned team
         $user->roles()->attach(2);
         return $user;        
         

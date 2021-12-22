@@ -24,8 +24,8 @@ class TeamsTableSeeder extends Seeder
             [
                 'id'    => 2,
                 'user_id' => 2,
-                'name' => 'Admin Team',
-                'personal_team' => 1,
+                'name' => 'General Team',
+                'personal_team' => 2,
             ],
         ];
 
