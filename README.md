@@ -20,8 +20,11 @@ This steps has been done during this repo push. This information is just to let 
 - Setup Database information in .env file with your own db preferences and create the db in mysql
 
 Checking catch bug throws error by adding below statements:
+[app\Providers\AppServiceProvider.php]
 - - use Illuminate\Support\Facades\Schema; // at use area (below namespace)
 - - Schema::defaultstringLength(191); // inside public function boot() { ... }
+
+You may remove above test once everything is working fine.
 
 - ~/Projects/openapp$ php artisan migrate
 - ~/Projects/openapp$ composer require laravel/jetstream
