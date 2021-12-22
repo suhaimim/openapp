@@ -38,8 +38,8 @@ To add a Teams features, run these steps;
 
 - ~/Projects/openapp$ php artisan jetstream:install livewire --teams
 - ~/Projects/openapp$ npm install && npm run dev
-- ~/Projects/openapp$ php artisan vendor:publish --tag=jetstream-views
-- ~/Projects/openapp$ php artisan migrate:refresh
+- ~/Projects/openapp$ php artisan vendor:publish --tag=jetstream-views (this step is not necessary)
+- ~/Projects/openapp$ php artisan migrate:refresh (refresh is an optional in case previos setup already creates some user data, and this will clean all the data due to the dependenies between users and teams)
 
 
 

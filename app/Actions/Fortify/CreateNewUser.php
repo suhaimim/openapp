@@ -15,7 +15,7 @@ class CreateNewUser implements CreatesNewUsers
     use PasswordValidationRules;
 
     /**
-     * Create a newly registered user.
+     * Validate and create a newly registered user.
      *
      * @param  array  $input
      * @return \App\Models\User
@@ -29,15 +29,27 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-        return DB::transaction(function () use ($input) {
-            return tap(User::create([
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
-            });
-        });
+
+        // return DB::transaction(function () use ($input) {
+        //     return tap(User::create([
+        //         'name' => $input['name'],
+        //         'email' => $input['email'],
+        //         'password' => Hash::make($input['password']),
+        //     ]), function (User $user) {
+        //         $this->createTeam($user);
+        //     });
+        // });
+
+        $user = User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]);        
+
+        $user->createTeam($user);
+        $user->roles()->attach(2);
+        return $user;        
+        
     }
 
     /**
@@ -54,4 +66,5 @@ class CreateNewUser implements CreatesNewUsers
             'personal_team' => true,
         ]));
     }
+
 }
