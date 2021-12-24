@@ -44,7 +44,13 @@ To add a Teams features, run these steps;
 - ~/Projects/openapp$ php artisan vendor:publish --tag=jetstream-views (this step is not necessary)
 - ~/Projects/openapp$ php artisan migrate:refresh (refresh is an optional in case previos setup already creates some user data, and this will clean all the data due to the dependenies between users and teams)
 
+For direct clone from suhaimi branch, run below steps to start use the starter apps;
 
+- /Projects/openapp$ php artisan migrate:fresh
+- /Projects/openapp$ php artisan db:seed
+- /Projects/openapp$ php artisan serve
+
+The default login can be found inside the database\seeders\UsersTableSeeder.php 
 
 ### E-Mail to suhaimi.masri@gmail.com 
 
