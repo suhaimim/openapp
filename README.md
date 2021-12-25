@@ -1,54 +1,27 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<center>OpenApp Project</center>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+___
 
-------
+<mark>* OpenApp</mark> (non-official) <mark> adalah sebuah Kit Pemula Web Aplikasi ( Web Application Starter Kit) yang dibina menggunakan teknologi kerangka-kerja berikut: </mark>.
 
-## Steps up to this initial setup 
-**(Malay Language will be provide upon request)**
+|N#| Icon | Framework | Kandungan |
+|--| ---- | --------- | ----------- |
+|1.| ![Alt text](./controllers_brief.svg)
+<img src="./controllers_brief.svg"> | CodeIgniter (CI4) | Auth, UI, CRUD, API |
+|2.| ---- | Laravel (Lara8) | Auth, UI, CRUD, API |
+|3.| ---- | .NET Core (Core6) | Auth, UI, CRUD, API |
+|4.| ---- | FrontEnd (Any NodeJS) | Auth, UI, CRUD, API |
 
-This steps has been done during this repo push. This information is just to let you know what was the steps taken so far in case you would like to start from scratch and setup from your end without go through this repo clone. (laravel v8.6.9)
 
-- ~/Projects$ composer create-project laravel/laravel openapp --prefer-dist
-- ~/Projects$ cd openapp/
-- ~/Projects$ code .
-- Setup Database information in .env file with your own db preferences and create the db in mysql
+Harapan agar KPWA ini dapat membantu para pelajar @beginner dalam memulakan karier/minat dalam pembangunan aplikasi web dalam tempoh masa yang singkat dan terurus.
 
-Checking catch bug throws error by adding below statements:
-- - use Illuminate\Support\Facades\Schema; // at use area (below namespace)
-- - Schema::defaultstringLength(191); // inside public function boot() { ... }
-
-- ~/Projects/openapp$ php artisan migrate
-- ~/Projects/openapp$ composer require laravel/jetstream
-- ~/Projects/openapp$ php artisan jetstream:install livewire
-- ~/Projects/openapp$ npm install && npm run dev
-- ~/Projects/openapp$ php artisan migrate
-
-At this stage, you should be able to run the apps and login by doing this
-- ~/Projects/openapp$ php artisan serve
-
-However, lets continue with .env sendmail configuration (your own smtp settings)
-
-To add a Teams features, run these steps;
-
-- ~/Projects/openapp$ php artisan jetstream:install livewire --teams
-- ~/Projects/openapp$ npm install && npm run dev
-- ~/Projects/openapp$ php artisan vendor:publish --tag=jetstream-views
-- ~/Projects/openapp$ php artisan migrate:refresh
+Lazimnya, setiap applikasi dan setiap kerangka-kerja disimpan secara berasingan dalam repository berlainan. Namun, demi memudahkan pemula untuk menguasai keseluruhan konsep dan perbezaan bagi setiap kerangka-kerja, maka pihak pentadbir menyatukan keseluruhan kerangk-kerja yang lazimnya digunakan secara meluas sama ada oleh non-profit organization mahupun pihak komersial.
 
 
 
-### E-Mail to suhaimi.masri@gmail.com 
 
-If you required any assistant in regards of this matter, please do not hesitate to contact me at my email above or find me in facebook.
 
-Any comments and contributions are mostly welcome.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
