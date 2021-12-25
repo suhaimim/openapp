@@ -12,6 +12,7 @@ ___
 |2.|  | Laravel (Lara8) | Auth, UI, CRUD, API |
 |3.|  | .NET Core (Core6) | Auth, UI, CRUD, API |
 |4.|  | FrontEnd (Any NodeJS) | Auth, UI, CRUD, API |
+|5.|  | Mobile (Android) | Auth, UI, CRUD, API   |
 
 
 ## Tujuan
