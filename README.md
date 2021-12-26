@@ -29,6 +29,10 @@ Bagi setiap kerangka-kerja di atas, akan mempunyai sub-branch, dan mana-mana bra
 
 Atau, cara lain ialah dengan watch & fork repo penyumbang dalam bentuk kumpulan dari link yang dikongsikan. Ini adalah cara kerja yang lebih mirip kepada persekitaran kerja sebenar.
 
+## Design (Rekaan Spesifikasi)
+Menggunakan konsep asas CMS, manakala setiap fungsi besar yang akan disertakan ke dalam platform dijadikan sebagai modul atau plugin.
+
+Penggunaan Wireframe yang sama, Database Diagram yang sama, di atas framework berbeza.
 
 
 
