@@ -11,7 +11,7 @@ ___
 |1.|  | CodeIgniter (CI4) | - Auth: Myth, - UI: w3.css, CRUD, - API: REST, - DB: MySQL |
 |2.|  | Laravel (Lara8) | - Auth: Jetstream, - UI: Tailwind, CRUD, - API: REST, - DB: PostgreSQL |
 |3.|  | .NET Core (Core6) | - Auth: Identity, - UI: CoreUI, CRUD, - API: SOAP, - DB: MSSQL |
-|4.|  | FrontEnd (Any NodeJS) | Auth, UI, CRUD, API |
+|4.|  | FrontEnd (Any NodeJS) | - Auth: , - UI: , CRUD, - API: , - DB:  |
 |5.|  | Mobile (Android) | - Auth: Firebase, - UI: Flutter, CRUD, - API: , - DB: Firebase |
 
 
@@ -22,7 +22,7 @@ Harapan agar KPWA ini dapat membantu para pelajar @beginner dalam memulakan kari
 Lazimnya, setiap applikasi dan setiap kerangka-kerja disimpan secara berasingan dalam repository berlainan. Namun, demi memudahkan pemula untuk menguasai keseluruhan konsep dan perbezaan bagi setiap kerangka-kerja, maka pihak pentadbir menyatukan keseluruhan kerangk-kerja yang lazimnya digunakan secara meluas sama ada oleh non-profit organization mahupun pihak komersial.
 
 ## Penyumbang
-Penyumbang yang berminat untuk menyertai projek ini, bolehlah memohon akses kepada pihat pentadbir suhaimi.masri@gmail.com untuk menghasilkan branch berasingan.
+Penyumbang yang berminat untuk menyertai projek ini, bolehlah memohon akses kepada pihak pentadbir suhaimi.masri@gmail.com untuk menghasilkan branch berasingan.
 
 ## Proses Branch
 Bagi setiap kerangka-kerja di atas, akan mempunyai sub-branch, dan mana-mana branch peyumbang yang telah lengkap sesuatu modul, akan di MERGE kepada sub-branch dan akhir sekali ke master branch.
