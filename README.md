@@ -1,4 +1,4 @@
-<center>OpenApp Project</center>
+<h1>OpenApp Project</h1>
 
 ___
 
@@ -8,10 +8,11 @@ ___
 
 |N#| Icon | Framework | Topik |
 |--| ---- | --------- | ----------- |
-|1.|  | CodeIgniter (CI4) | Auth, UI, CRUD, API |
-|2.|  | Laravel (Lara8) | Auth, UI, CRUD, API |
-|3.|  | .NET Core (Core6) | Auth, UI, CRUD, API |
+|1.|  | CodeIgniter (CI4) | - Auth: Myth, - UI: w3.css, CRUD, - API: REST, - DB: MySQL |
+|2.|  | Laravel (Lara8) | - Auth: Jetstream, - UI: Tailwind, CRUD, - API: REST, - DB: PostgreSQL |
+|3.|  | .NET Core (Core6) | - Auth: Identity, - UI: CoreUI, CRUD, - API: SOAP, - DB: MSSQL |
 |4.|  | FrontEnd (Any NodeJS) | Auth, UI, CRUD, API |
+|5.|  | Mobile (Android) | - Auth: Firebase, - UI: Flutter, CRUD, - API: , - DB: Firebase |
 
 
 ## Tujuan
@@ -25,6 +26,8 @@ Penyumbang yang berminat untuk menyertai projek ini, bolehlah memohon akses kepa
 
 ## Proses Branch
 Bagi setiap kerangka-kerja di atas, akan mempunyai sub-branch, dan mana-mana branch peyumbang yang telah lengkap sesuatu modul, akan di MERGE kepada sub-branch dan akhir sekali ke master branch.
+
+Atau, cara lain ialah dengan watch & fork repo penyumbang dalam bentuk kumpulan dari link yang dikongsikan. Ini adalah cara kerja yang lebih mirip kepada persekitaran kerja sebenar.
 
 
 
