@@ -34,6 +34,22 @@ Menggunakan konsep asas CMS, manakala setiap fungsi besar yang akan disertakan k
 
 Penggunaan Wireframe yang sama, Database Diagram yang sama, di atas framework berbeza.
 
+## Dev. Env. (Persiapan Pembangunan Aplikasi)
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Docker</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Windows</td>
+            <td>Linux</td>
+            <td>Mac</td>
+        </tr>
+    </tbody>
+</table>
 
 
 
