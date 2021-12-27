@@ -17,10 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/about', function () {
-    return view('about');
-})->name('about');
+// Route::get('categories/{category}', function ($category) {
+//     return view('welcome');
+// });
+
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('about', function () {
+        return view('about');
+    })->name('about');
+
+
+});
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/articles', function () {
+//     return view('articles');
+// })->name('articles');
