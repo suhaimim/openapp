@@ -13,9 +13,9 @@
                             @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border w-full" wire:model="group"
-                                placeholder="Group">
-                            @error('group') <span class="text-red-500">{{ $message }}</span>@enderror
+                            <input type="text" class="shadow appearance-none border w-full" wire:model="description"
+                                placeholder="Description">
+                            @error('description') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>                     
                     </div>
                 </div>

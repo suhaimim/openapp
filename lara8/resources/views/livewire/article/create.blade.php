@@ -9,13 +9,23 @@
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
                         <div class="mb-4">
-                            <input type="text" class="sshadow appearance-none border w-full" placeholder="Name" wire:model="name">
-                            @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
+                            <label class="inline-block w-32 font-bold">Category:</label>
+                            <select name="category" wire:model="category_id" class="border shadow p-2 bg-white">
+                                <option value=''>Choose a category</option>
+                                @foreach($categories as $category)
+                                    <option value={{ $category->id }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border w-full" wire:model="group"
-                                placeholder="Group">
-                            @error('group') <span class="text-red-500">{{ $message }}</span>@enderror
+                            <input type="text" class="sshadow appearance-none border w-full" placeholder="Title" wire:model="title">
+                            @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" class="shadow appearance-none border w-full" wire:model="body"
+                                placeholder="Contents">
+                            @error('body') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>                     
                     </div>
                 </div>

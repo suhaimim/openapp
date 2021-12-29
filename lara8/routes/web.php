@@ -1,26 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Livewire\ArticleLC;
+use App\Http\Livewire\CategoryLC;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-// Route::get('categories/{category}', function ($category) {
-//     return view('welcome');
-// });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/', function () {
@@ -31,10 +17,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth:sanctum'], function
         return view('about');
     })->name('about');
 
+    Route::get('categories', CategoryLC::class)->name('categories');
+    Route::get('articles', ArticleLC::class)->name('articles');
+
 
 });
 
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/articles', function () {
-//     return view('articles');
-// })->name('articles');
