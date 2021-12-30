@@ -7,8 +7,7 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (session()->has('message'))
-            <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3"
-                role="alert">
+            <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3" role="alert">
                 <div class="flex">
                     <div>
                         <p class="text-sm">{{ session('message') }}</p>
@@ -16,8 +15,7 @@
                 </div>
             </div>
             @endif
-            <button wire:click="create()"
-                class="border-2 border-indigo-400 bg-indigo-500 text-white font-bold py-2 px-4 rounded my-3">New Category</button>
+            <button wire:click="create()" class="border-2 border-indigo-400 bg-indigo-500 text-white font-bold py-2 px-4 rounded my-3">New Category</button>
             @if($isDialogOpen)
             @include('livewire.category.create')
             @endif      
@@ -42,10 +40,8 @@
                             <td class="px-4 py-2">{{ $item->user->name }}</td>
                             <td class="px-4 py-2">{{ date('D d-M-Y H:i', strtotime($item->updated_at)) }}</td>
                             <td class="px-4 py-2">
-                                <button wire:click="edit({{ $item->id }})"
-                                    class="border-2 border-red-700 text-red-700 font-bold py-2 px-4">Edit</button>
-                                <button wire:click="delete({{ $item->id }})"
-                                    class="border-2 border-red-700 bg-red-700 text-white font-bold py-2 px-4">Delete</button>
+                                <button wire:click="edit({{ $item->id }})" class="border-2 border-red-700 text-red-700 font-bold py-2 px-4">Edit</button>
+                                <button wire:click="delete({{ $item->id }})" class="border-2 border-red-700 bg-red-700 text-white font-bold py-2 px-4">Delete</button>
                             </td>
                         </tr>
                     @empty

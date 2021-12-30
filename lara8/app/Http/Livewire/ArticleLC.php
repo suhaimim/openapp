@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\WithPagination;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Livewire\CategoryLC;
@@ -12,9 +13,15 @@ use Auth;
 class ArticleLC extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $category_id, $title, $body, $article_id;
     public $isDialogOpen = 0;
+ 
+    public $image, $imagePreview;
+    // public $storeImage, $image;
+    protected $listeners = ['fileUpload' => 'handleFileUpload'];
+
 
     public function render()
     {
@@ -44,6 +51,7 @@ class ArticleLC extends Component
     private function resetCreateForm(){
         $this->title = '';
         $this->body = '';
+        $this->image = '';
     }
 
     public function store()
@@ -51,6 +59,7 @@ class ArticleLC extends Component
         $this->validate([
             'title' => 'required|max:200',
             'body' => 'required|min:50',
+            'image' => 'nullable|mimes:jpg,jpeg,png|max:1024',
         ]);
     
         Article::updateOrCreate(['id' => $this->article_id], [
@@ -58,7 +67,11 @@ class ArticleLC extends Component
             'body' => $this->body,
             'category_id' => $this->category_id,
             'user_id' => Auth::user()->id,
+            'image' => $this->image,
         ]);
+
+        // $imageName = $this->image->store("images",'public');
+
 
         session()->flash('message', $this->article_id ? 'Article updated!' : 'Article created!');
 
@@ -73,6 +86,7 @@ class ArticleLC extends Component
         $this->category_id = $article->category_id;
         $this->title = $article->title;
         $this->body = $article->body;
+        $this->image = $article->image;
     
         $this->openModalPopover();
     }
@@ -87,5 +101,24 @@ class ArticleLC extends Component
         $article = Article::findOrFail($id);
         return view('livewire.article.details', compact('article'));
     }
+
+    // public function handleFileUpload($image)
+    public function handleFileUpload($imageData)
+    {
+       $this->validate([
+
+            'image' => 'nullable|mimes:jpg,jpeg,png|max:1024', // 1MB Max
+
+        ]);        
+        $this->image = $imageData;
+    }  
+
+    // public function storeImage()
+    // {
+    //     if(!$this->image){
+    //         return null;
+    //     }
+    // }      
+    
 
 }
