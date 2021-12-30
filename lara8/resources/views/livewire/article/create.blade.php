@@ -10,7 +10,7 @@
                     <div class="">
                         <div class="mb-4">
                             <label class="inline-block w-32 font-bold">Category:</label>
-                            <select name="category" wire:model="category_id" class="border shadow p-2 bg-white">
+                            <select name="category" wire:model="category_id" class="border shadow p-2 bg-white w-full">
                                 <option value=''>Choose a category</option>
                                 @foreach($categories as $category)
                                     <option value={{ $category->id }}>{{ $category->name }}</option>
@@ -23,8 +23,8 @@
                             @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border w-full" wire:model="body"
-                                placeholder="Contents">
+                            <textarea rows="5" class="shadow appearance-none border w-full" wire:model="body"
+                                placeholder="Contents"></textarea>
                             @error('body') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>                     
                     </div>

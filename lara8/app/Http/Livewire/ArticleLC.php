@@ -49,8 +49,8 @@ class ArticleLC extends Component
     public function store()
     {
         $this->validate([
-            'title' => 'required',
-            'body' => 'required|min:100',
+            'title' => 'required|max:200',
+            'body' => 'required|min:50',
         ]);
     
         Article::updateOrCreate(['id' => $this->article_id], [
@@ -82,5 +82,10 @@ class ArticleLC extends Component
         Article::find($id)->delete();
         session()->flash('message', 'Article removed!');
     }        
+
+    public function details($id) {
+        $article = Article::findOrFail($id);
+        return view('livewire.article.details', compact('article'));
+    }
 
 }

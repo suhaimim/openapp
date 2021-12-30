@@ -19,7 +19,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth:sanctum'], function
 
     Route::get('categories', CategoryLC::class)->name('categories');
     Route::get('articles', ArticleLC::class)->name('articles');
-
+    Route::get('articles/{article}', [ArticleLC::class, 'details']);
 
 });
 
