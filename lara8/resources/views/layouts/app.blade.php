@@ -17,7 +17,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-@livewireScripts
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -42,7 +42,7 @@
 
         
 
-        
+        @livewireScripts
         @stack('modals')
         
 

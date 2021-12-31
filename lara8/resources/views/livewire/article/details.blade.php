@@ -16,6 +16,11 @@
                <span class="text-sm">Author: {{ $article->user->name }}</span>
                <span class="text-sm">Posted at: {{ date('D d-M-Y H:i', strtotime($article->updated_at)) }}</span>
            </div> 
+           <div class="max-w-full">
+               @if($article->image)
+                <img src="{{ '/storage/'.$article->image }}" alt="">
+               @endif
+           </div>
            <p class="py-6">
             {!! nl2br($article->body) !!}     
            </p>

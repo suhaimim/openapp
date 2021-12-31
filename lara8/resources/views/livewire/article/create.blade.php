@@ -19,17 +19,18 @@
                             @error('category_id') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <input type="text" class="sshadow appearance-none border w-full" placeholder="Title" wire:model="title">
+                            <input type="text" class="sshadow appearance-none border w-full" placeholder="Title" wire:model.lazy="title">
                             @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <textarea rows="5" class="shadow appearance-none border w-full" wire:model="body" placeholder="Contents"></textarea>
+                            <textarea rows="5" class="shadow appearance-none border w-full" wire:model.lazy="body" placeholder="Contents"></textarea>
                             @error('body') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>   
                         <div class="mb-4">
-                            <input type="file" id="image" wire:change="$emit('fileChoosen')" >     
+                            <input type="file" id="image" wire:change="$emit('fileChoosen')" > 
+                            {{-- @error('image') <span class="text-red-500">{{ $message }}</span>@enderror     --}}
                             @if($image)
-                                <img src="{{$image}}" alt="" width="200" />
+                                <img src="{{ $image }}" alt="" width="200" />
                             @endif
                         </div>                                       
                     </div>
