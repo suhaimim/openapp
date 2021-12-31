@@ -32,7 +32,7 @@ class ArticleLC extends Component
         $this->categories = Category::all();
         return view('livewire.article.show',
         [
-            'articles' => Article::latest()->paginate(10),
+            'articles' => Article::latest()->paginate(5),
         ]);
     }
 
@@ -93,7 +93,7 @@ class ArticleLC extends Component
         $this->category_id = $article->category_id;
         $this->title = $article->title;
         $this->body = $article->body;
-        $this->image = $article->image;
+        $this->image = '/storage/'.$article->image;
         $this->publish = $article->publish;
         $this->status = $article->status;
     

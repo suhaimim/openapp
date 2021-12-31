@@ -27,11 +27,13 @@
                             @error('body') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>   
                         <div class="mb-4">
-                            <input type="file" id="image" wire:change="$emit('fileChoosen')" > 
+                            <input type="file" id="image" wire:change="$emit('fileChoosen')" wire:model="image"> 
                             {{-- @error('image') <span class="text-red-500">{{ $message }}</span>@enderror     --}}
                             @if($image)
                                 <img src="{{ $image }}" alt="" width="200" />
-                            @endif
+                            @else
+                                <img alt="" width="200" wire:model="image" />
+                            @endif                         
                         </div>                                       
                     </div>
                 </div>
