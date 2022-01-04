@@ -6,17 +6,17 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-form-section submit="addTeamMember">
                 <x-slot name="title">
-                    {{ __('Add Team Member') }}
+                    {{ __('Add Orga Member') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('Add a new team member to your team, allowing them to collaborate with you.') }}
+                    {{ __('Add a new orga member to your orga, allowing them to collaborate with you.') }}
                 </x-slot>
 
                 <x-slot name="form">
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600">
-                            {{ __('Please provide the email address of the person you would like to add to this team.') }}
+                            {{ __('Please provide the email address of the person you would like to add to this orga.') }}
                         </div>
                     </div>
 
@@ -81,11 +81,11 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-action-section>
                 <x-slot name="title">
-                    {{ __('Pending Team Invitations') }}
+                    {{ __('Pending Orga Invitations') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.') }}
+                    {{ __('These people have been invited to your orga and have been sent an invitation email. They may join the orga by accepting the email invitation.') }}
                 </x-slot>
 
                 <x-slot name="content">
@@ -118,11 +118,11 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-action-section>
                 <x-slot name="title">
-                    {{ __('Team Members') }}
+                    {{ __('Orga Members') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('All of the people that are part of this team.') }}
+                    {{ __('All of the people that are part of this orga.') }}
                 </x-slot>
 
                 <!-- Team Member List -->
