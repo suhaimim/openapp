@@ -4,22 +4,22 @@ namespace App\Http\Livewire;
 
 use Livewire\WithPagination;
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Team;
 use Auth;
 
-class UserLC extends Component
+class TeamLC extends Component
 {
     use WithPagination;
 
-    public $name, $email, $user_id;
+    public $name, $team_id;
     public $isDialogOpen = 0;
 
     public function render()
     {
         // $this->teams = Teams::all();
-        return view('livewire.users.show',
+        return view('livewire.team.show',
         [
-            'users' => User::paginate(10),
+            'teams' => Team::paginate(10),
         ]);
     }
 
@@ -41,22 +41,19 @@ class UserLC extends Component
 
     private function resetCreateForm(){
         $this->name = '';
-        $this->email = '';
     }
 
     public function store()
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email',
         ]);
     
-        User::updateOrCreate(['id' => $this->user_id], [
+        Team::updateOrCreate(['id' => $this->$team_id], [
             'name' => $this->name,
-            'email' => $this->email,
         ]);
 
-        session()->flash('message', $this->user_id ? 'User updated!' : 'User created!');
+        session()->flash('message', $this->id ? 'Team updated!' : 'Team created!');
 
         $this->closeModalPopover();
         $this->resetCreateForm();
@@ -64,18 +61,17 @@ class UserLC extends Component
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $this->user_id = $id;
-        $this->name = $user->name;
-        $this->email = $user->email;
+        $team = Team::findOrFail($id);
+        $this->team_id = $id;
+        $this->name = $team->name;
     
         $this->openModalPopover();
     }
     
     public function delete($id)
     {
-        User::find($id)->delete();
-        session()->flash('message', 'User removed!');
+        Team::find($id)->delete();
+        session()->flash('message', 'Team removed!');
     }        
 
 }
