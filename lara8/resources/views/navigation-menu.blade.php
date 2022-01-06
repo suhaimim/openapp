@@ -56,11 +56,16 @@
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('List of Applications') }}
                                     </div>
-
                                     <!-- Apps Settings -->
-                                    <x-jet-responsive-nav-link href="{{ route('articles') }}" :active="request()->routeIs('articles')">
-                                        {{ __('Articles') }}
-                                    </x-jet-responsive-nav-link>
+                                    {{-- @forelse($myapps ?? '' as $item)
+                                        <x-jet-responsive-nav-link href="{{ route($item->name) }}" :active="request()->routeIs($item->name)">
+                                            {{ __($item->name) }}
+                                        </x-jet-responsive-nav-link>                                                                        
+                                    @empty --}}
+                                        <x-jet-responsive-nav-link href="{{ route('articles') }}" :active="request()->routeIs('articles')">
+                                            {{ __('Articles') }}
+                                        </x-jet-responsive-nav-link>                                    
+                                    {{-- @endforelse --}}
                                 </div>
                             </x-slot>
                         </div>

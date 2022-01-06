@@ -65,7 +65,7 @@ class ArticleLC extends Component
         $this->validate([
             'title' => 'required|max:200',
             'body' => 'required|min:50',
-            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:2048',
         ]);
 
         $this->image = $this->storeImage();
