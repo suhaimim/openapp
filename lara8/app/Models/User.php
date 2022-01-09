@@ -63,6 +63,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\MyApp');
     }
 
+    public function teams(){
+        return $this->hasMany('App\Models\Team');
+    }
 
     public function categories(){
         return $this->hasMany('App\Models\Category');

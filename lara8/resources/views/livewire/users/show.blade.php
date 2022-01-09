@@ -17,7 +17,7 @@
             @endif
 
             <div class="flex justify-between">
-                <button wire:click="create()" class="border-2 border-indigo-400 bg-indigo-500 text-white font-bold py-2 px-4 rounded my-3">Edit User</button>
+                {{-- <button wire:click="create()" class="border-2 border-indigo-400 bg-indigo-500 text-white font-bold py-2 px-4 rounded my-3">Edit User</button> --}}
                 @if($isDialogOpen)
                 @include('livewire.users.create')
                 @endif      

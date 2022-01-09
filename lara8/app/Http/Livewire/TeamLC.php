@@ -12,6 +12,7 @@ class TeamLC extends Component
     use WithPagination;
 
     public $name, $team_id;
+    public $personal = 0;
     public $isDialogOpen = 0;
 
     public function render()
@@ -49,14 +50,17 @@ class TeamLC extends Component
             'name' => 'required',
         ]);
     
-        Team::updateOrCreate(['id' => $this->$team_id], [
+        Team::updateOrCreate(['id' => $this->team_id], [
             'name' => $this->name,
+            'user_id' => Auth::user()->id,
+            'personal_team' => $this->personal,
         ]);
 
-        session()->flash('message', $this->id ? 'Team updated!' : 'Team created!');
+        session()->flash('message', $this->team_id ? 'Team updated!' : 'Team created!');
 
         $this->closeModalPopover();
         $this->resetCreateForm();
+        return back();
     }
 
     public function edit($id)
