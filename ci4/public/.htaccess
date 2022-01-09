@@ -16,6 +16,8 @@ Options All -Indexes
 	# http://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewritebase
 	# RewriteBase /
 
+	#RewriteCond $1 !^(index\.php|static|resources|robots\.txt)
+
 	# Redirect Trailing Slashes...
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} (.+)/$
@@ -31,7 +33,11 @@ Options All -Indexes
 	# request to the front controller, index.php
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
+	#RewriteRule . /index.php [L]
+	# RewriteRule ^(.*)$ index.php/$1 [L,NC,QSA]
 	RewriteRule ^([\s\S]*)$ index.php/$1 [L,NC,QSA]
+	# RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+	# RewriteRule ^ index.php [QSA,L]
 
 	# Ensure Authorization header is passed along
 	RewriteCond %{HTTP:Authorization} .

@@ -22,8 +22,9 @@ class App extends BaseConfig
      * environments.
      *
      * @var string
-     */
     public $baseURL = 'http://localhost:8080/';
+     */
+    public $baseURL = 'http://localhost/ci/';
 
     /**
      * --------------------------------------------------------------------------
@@ -36,7 +37,8 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    // public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -54,6 +56,7 @@ class App extends BaseConfig
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      *
      * @var string
+    public $uriProtocol = 'REQUEST_URI';
      */
     public $uriProtocol = 'REQUEST_URI';
 

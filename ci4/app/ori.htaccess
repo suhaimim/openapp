@@ -1,0 +1,5 @@
+<Directory "/opt/lamp/apache2/htdocs">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
