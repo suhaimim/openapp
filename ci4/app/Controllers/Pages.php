@@ -8,6 +8,16 @@ use App\Models\ResultModel;
 
 class Pages extends Controller
 {
+    private $db;
+    protected $surveyModel, $titleModel, $resultModel;
+
+    public function __construct()
+    {
+        $this->surveyModel  = new SurveyModel();
+        $this->titleModel   = new TitleModel();
+        $this->resultModel  = new ResultModel();
+    }
+
     public function index()
     {
         return view('welcome_message');
@@ -30,58 +40,34 @@ class Pages extends Controller
 
     public function surveyForm()
     {
-        $surveyModel = new SurveyModel();
-        $titleModel = new TitleModel();
-        helper(['form']);
-        $data['titles'] = $titleModel->orderBy('id', 'ASC')->findAll();
-        $data['surveys'] = $surveyModel->orderBy('id', 'ASC')->findAll();
+        $data['joinSurveyTitle'] = $this->surveyModel->getSurveys();
+        $data['titles'] = $this->titleModel->orderBy('id', 'ASC')->findAll();
+        $data['surveys'] = $this->surveyModel->orderBy('id', 'ASC')->findAll();
         return view('surveyForm',$data);
-    }
-    public function surveyFormSegment()
-    {
-        $surveyModel = new SurveyModel();
-        $titleModel = new TitleModel();
-        helper(['form']);
-        $data['titles'] = $titleModel->orderBy('id', 'ASC')->findAll();
-        $data['surveys'] = $surveyModel->orderBy('id', 'ASC')->findAll();
-        $segmentID = $this->request->getPost('selectSegment');
-        return view('surveyForm/'.$segmentID, $data);
-        // return redirect()->to('pages/surveyForm/'.$segmentID, $data);
-    }    
+    }  
     public function addTitle()
     {
-            $titleModel = new TitleModel();
-
             $data = [
                 'name'   => $this->request->getPost('tn1'),
             ];
-
-            $titleModel->save($data);
-
+            $this->titleModel->save($data);
             return redirect()->to('pages/surveyForm');        
     }
     public function addSurvey()
     {
-            $surveyModel = new SurveyModel();
-
             $data = [
                 'title'     => $this->request->getPost('st1'),
                 'question'  => $this->request->getPost('sq1'),
                 'answer'    => $this->request->getPost('sa1'),
                 'createdat' => date('U')
             ];
-
-            $surveyModel->save($data);
-
+            $this->surveyModel->save($data);
             return redirect()->to('pages/surveyForm');        
     }
     public function addResult()
     {
-        $resultModel    = new ResultModel();
-        $surveyModel    = new SurveyModel();
-        $titleModel     = new TitleModel();
-        $dataTitles     = $titleModel->orderBy('id', 'ASC')->findAll();
-        $dataSurveys    = $surveyModel->orderBy('id', 'ASC')->findAll();
+        $dataTitles     = $this->titleModel->orderBy('id', 'ASC')->findAll();
+        $dataSurveys    = $this->surveyModel->orderBy('id', 'ASC')->findAll();
 
         foreach($dataTitles as $titleNo){
             $iT = 1;
@@ -108,38 +94,32 @@ class Pages extends Controller
             'answer_other'  => $otherOption,
             'created_at'    => date('U')
         ];
-
-        $resultModel->save($data);
-
+        $this->resultModel->save($data);
         return redirect()->to('pages/surveyForm');        
     }
     public function editTitle($id) {
-        $tableName = new TitleModel();
         $dataEdit = [
             'name'   => $this->request->getPost('titleNAME'),
         ];
-        $tableName->update($id, $dataEdit);
+        $this->titleModel->update($id, $dataEdit);
         return redirect()->to('pages/surveyForm'); 
     }    
     public function editSurvey($id) {
-        $tableName = new SurveyModel();
         $dataEdit = [
             'title'   => $this->request->getPost('surveyTITLE'),
             'question'  => $this->request->getPost('surveyQUESTION'),
             'answer'    => $this->request->getPost('surveyANSWER'),
         ];
-        $tableName->update($id, $dataEdit);
+        $this->surveyModel->update($id, $dataEdit);
         return redirect()->to('pages/surveyForm'); 
     }    
    
     public function deleteTitle($id) {
-        $tableName = new TitleModel();
-        $tableName->where('id', $id)->delete($id);
+        $this->titleModel->where('id', $id)->delete($id);
         return redirect()->to('pages/surveyForm'); 
     }    
     public function deleteSurvey($id) {
-        $tableName = new SurveyModel();
-        $tableName->where('id', $id)->delete($id);
+        $this->surveyModel->where('id', $id)->delete($id);
         return redirect()->to('pages/surveyForm'); 
     }    
 

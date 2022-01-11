@@ -15,4 +15,12 @@ class SurveyModel extends Model{
         'createdat'
     ];
 
+    public function getSurveys()
+    {
+        return $this->db->table("surveys")
+                        ->join('titles', 'surveys.title = titles.id')
+                        ->get()->getResultArray();
+    }
+
+
 }

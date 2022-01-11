@@ -12,4 +12,11 @@ class TitleModel extends Model{
         'name'
     ];
 
+
+    public function getTitles()
+    {
+        # code...
+    }
+
+
 }

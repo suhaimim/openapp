@@ -15,7 +15,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                Pengkelasan menggunakan TAJUK
+                1. Pengkelasan menggunakan TAJUK
             </button>
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
@@ -104,7 +104,7 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Membina soalan-soalan TINJAUAN
+                2. Membina soalan-soalan TINJAUAN
             </button>
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -127,12 +127,16 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            foreach($surveys as $itemSurvey):
+                                            // foreach($surveys as $itemSurvey):
+                                            foreach($joinSurveyTitle as $itemSurvey):
                                         ?>
                                         <tr>
                                             <td><?=$itemSurvey['id']?></td>
-                                            <td><?=$itemSurvey['title']?></td>
-                                            <td><?=$itemSurvey['question']?></td>
+                                            <td><span class="badge bg-info" data-bs-toggle="tooltip" data-bs-placement="right" title="<?=$itemSurvey['name']?>"><?=$itemSurvey['title']?></span></td>
+                                            <td>
+                                                <span class="badge bg-success" data-bs-toggle="tooltip" data-bs-placement="right" title="<?=$itemSurvey['answer']?>">A</span>
+                                                <?=$itemSurvey['question']?>
+                                            </td>
                                             <td style="text-align: right;">
                                                 <button class="btn btn-outline-warning btn-sm" onClick="document.getElementById('<?php echo "editModalS".$itemSurvey['id']; ?>').style.display = 'block'">Edit</button>
                                                 <button class="btn btn-outline-danger btn-sm" onClick="document.getElementById('<?php echo "deleteModalS".$itemSurvey['id']; ?>').style.display = 'block'">Delete</button>
@@ -215,79 +219,117 @@
 
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Senarai borang tinjauan mengikut TAJUK
+            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                3. Senarai borang tinjauan mengikut TAJUK
             </button>
             </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                 <div class="accordion-body">
                 <!-- Add content here -->
                     <div class="container my-3">
-                        <!-- <form action="<?php echo base_url(); ?>/Pages/surveyFormSegment" method="post">
-                            <select name="selectSegment" id="" class="form-control">
-                                <?php 
-                                    foreach($titles as $title){
-                                        echo "<option value='".$title['id']."'>".$title['name']."</option>";
-                                    }
-                                ?>
-                            </select>
-                            <input type="submit" value="Go!"  class="form-control">
-                        </form> -->
+                        <form action="" method="post" class="row g-3 mb-3">
+                            <div class="col-auto">
+                                <select name="selectTitle" id="" class="form-control">
+                                    <option readonly>Sila pilih TAJUK</option>
+                                    <?php 
+                                        foreach($titles as $title){
+                                            echo "<option value='".$title['id']."'>".$title['name']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="Show" class="form-control btn btn-primary"  name="filterSurvey">
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-secondary" onClick="location.reload()">Refresh</button>
+                            </div>
+                        </form>
                         <?php
-                            $uri = current_url(true);
-                            $segment5 = $uri->getSegment(5);
                             if($titles):
-                                // if($segment5 == ''){
-                                //     echo "No data available";   
-                                // } elseif($itemTitle['id'] == $segment5)  {
+                                if(isset($_POST['filterSurvey'])):
                                     foreach($titles as $itemTitle):
-                                        echo "<div class='pb-3'>";
-                                        echo "<h3>".$itemTitle['name']."</h3>";
-                                        $i = 1;
-                                        if($surveys):
-                                            echo "<form class='form-control' method='post' action='".base_url()."/Pages/addResult'>";
-                                            foreach($surveys as $itemSurvey):
-                                                if($itemSurvey['title'] == $itemTitle['id']):
-                                                    echo "<input type='hidden' name='titleNo' value='".$itemTitle['id']."'>";
-                                                    echo "<input type='hidden' name='surveyNo' value='".$itemSurvey['id']."'>";
-                                                    echo "<p>".$i++.". ".$itemSurvey['question']."</p>";
-                                                    $listAns = preg_split("/\n/", $itemSurvey['answer']);
-                                                    $a = 1;
-                                                    foreach($listAns as $option => $value):
-                                                        echo "<input type='hidden' name='optName' value='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."'>";
-                                                        if($value != NULL || $value != ""){
-                                                            echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."'> ".$value."</input><br>";
-                                                        } else {
-                                                            echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."' class='form-inline'> Lain-lain:</input>"; 
-                                                            echo '<input type="text" name="ansOptOther" placeholder="Nyatakan" class="form-control" ><br>';
-                                                        }
-                                                    endforeach;
-                                                    echo "<br>";
-                                                endif;
-                                            endforeach;
-                                            echo "<input class='btn btn-primary form-control' type='submit' value='Submit'>";
-                                            echo "</form>";
-                                        endif;                    
-                                        echo "</div>";
-                                    endforeach;                                    
-                                // } else {
-                                //     echo "Invalid Entry";
-                                // };                                   
+                                        if($itemTitle['id'] == $_POST['selectTitle']):
+                                            echo "<div class='pb-3'>";
+                                            echo "<h3>".$itemTitle['name']."</h3>";
+                                            $i = 1;
+                                            if($surveys):
+                                                echo "<form class='form-control' method='post' action='".base_url()."/Pages/addResult'>";
+                                                foreach($surveys as $itemSurvey):
+                                                    if($itemSurvey['title'] == $itemTitle['id']):
+                                                        echo "<input type='hidden' name='titleNo' value='".$itemTitle['id']."'>";
+                                                        echo "<input type='hidden' name='surveyNo' value='".$itemSurvey['id']."'>";
+                                                        echo "<p>".$i++.". ".$itemSurvey['question']."</p>";
+                                                        $listAns = preg_split("/\n/", $itemSurvey['answer']);
+                                                        $a = 1;
+                                                        foreach($listAns as $option => $value):
+                                                            echo "<input type='hidden' name='optName' value='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."'>";
+                                                            if($value != NULL || $value != ""){
+                                                                echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."'> ".$value."</input><br>";
+                                                            } else {
+                                                                echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."' class='form-inline'> Lain-lain:</input>"; 
+                                                                echo '<input type="text" name="ansOptOther" placeholder="Nyatakan" class="form-control" ><br>';
+                                                            }
+                                                        endforeach;
+                                                        echo "<br>";
+                                                    endif;
+                                                endforeach;
+                                                echo "<input class='btn btn-primary form-control' type='submit' value='Submit'>";
+                                                echo "</form>";
+                                            endif;                    
+                                            echo "</div>";
+                                        endif;
+                                    endforeach;                                
+                                endif;
                             endif;
                         ?>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
+                4. Keputusan TINJAUAN
+            </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body">
+                <!-- Add content here -->
+                    <div class="container my-3">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 px-3">
+                                <p>
+                                    Laporan Tinjauan.
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    Analisis Tinjauan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
 
-
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 
    
 </body>
 </html>    
 
-<script src="./assets/js/jquery-3.3.1.js"></script>
+<script src="../assets/js/jquery-3.3.1.js"></script>
 <script src="../assets/bootstrap-5.0.2/dist/js/bootstrap.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
