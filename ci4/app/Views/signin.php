@@ -10,19 +10,15 @@
     <title>Codeigniter Login with Email/Password Example</title>
   </head>
   <body>
-    <div class="container">
-        <div class="">
-
-        </div>
-
-        <div class="row justify-content-md-center">
+    <div class="container  mt-5">
+        <div class="d-flex justify-content-center">
             <div class="col-5">
                 
                 <h2>Login in</h2>
                 
                 <?php if(session()->getFlashdata('msg')):?>
                     <div class="alert alert-warning">
-                       <?= session()->getFlashdata('msg') ?>
+                    <?= session()->getFlashdata('msg') ?>
                     </div>
                 <?php endif;?>
 
@@ -36,11 +32,10 @@
                     </div>
                     
                     <div class="d-grid">
-                         <button type="submit" class="btn btn-success">Signin</button>
+                        <button type="submit" class="btn btn-success">Signin</button>
                     </div>     
                 </form>
             </div>
-              
         </div>
     </div>
   </body>
