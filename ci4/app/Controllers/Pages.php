@@ -6,8 +6,11 @@ use App\Models\TitleModel;
 use App\Models\SurveyModel;
 use App\Models\ResultModel;
 
+<<<<<<< HEAD
 use function PHPUnit\Framework\isEmpty;
 
+=======
+>>>>>>> master
 class Pages extends Controller
 {
     private $db;
@@ -77,6 +80,7 @@ class Pages extends Controller
                 $iS = 1;
                 // Table Surveys, Column Title is saving Table Titles Id
                 if($surveyNo['title'] == $titleNo['id']){
+<<<<<<< HEAD
                     $optionNameRadio = "ansOpt-t".$titleNo['id']."s".$surveyNo['id'];
                     $optionNameCheck = $titleNo['id']."s".$surveyNo['id']."[]";
                     if($this->request->getPost('optNameRadio') == $optionNameRadio){
@@ -107,6 +111,28 @@ class Pages extends Controller
             ];
             $this->resultModel->save($data);
         }
+=======
+                    $optionName = "ansOpt-t".$titleNo['id']."s".$surveyNo['id'];
+                    if($optionName == $this->request->getPost('optName')){
+                        $optionValue = $this->request->getPost($optionName);
+                        // $otherOption = $this->request->getPost('otherAns');
+                    }else{
+                        $optionValue = $this->request->getPost($optionName);
+                        $otherOption = $this->request->getPost('ansOptOther');
+                    };
+                }
+            }
+        }
+
+        $data = [
+            'title_no'      => $this->request->getPost('titleNo'),
+            'question_no'   => $this->request->getPost('surveyNo'),
+            'answer_no'     => $optionValue,
+            'answer_other'  => $otherOption,
+            'created_at'    => date('U')
+        ];
+        $this->resultModel->save($data);
+>>>>>>> master
         return redirect()->to('pages/surveyForm');        
     }
     public function editTitle($id) {

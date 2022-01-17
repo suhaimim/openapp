@@ -14,6 +14,7 @@ yarn-error.log
 /.idea
 /.vscode
 /ci4/public/assets
+<<<<<<< HEAD
 /ci4/vendor
 /ci4/writable
 /lara8/bootstrap
@@ -24,3 +25,5 @@ yarn-error.log
 
 
 
+=======
+>>>>>>> master

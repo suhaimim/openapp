@@ -12,7 +12,10 @@
   <body>
 
     <div class="accordion" id="accordionPanelsStayOpenExample">
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -132,22 +135,35 @@
                                             foreach($joinSurveyTitle as $itemSurvey):
                                         ?>
                                         <tr>
+<<<<<<< HEAD
                                             <td><?=$itemSurvey['survey_id']?></td>
+=======
+                                            <td><?=$itemSurvey['id']?></td>
+>>>>>>> master
                                             <td><span class="badge bg-info" data-bs-toggle="tooltip" data-bs-placement="right" title="<?=$itemSurvey['name']?>"><?=$itemSurvey['title']?></span></td>
                                             <td>
                                                 <span class="badge bg-success" data-bs-toggle="tooltip" data-bs-placement="right" title="<?=$itemSurvey['answer']?>">A</span>
                                                 <?=$itemSurvey['question']?>
                                             </td>
                                             <td style="text-align: right;">
+<<<<<<< HEAD
                                                 <button class="btn btn-outline-warning btn-sm" onClick="document.getElementById('<?php echo "editModalS".$itemSurvey['survey_id']; ?>').style.display = 'block'">Edit</button>
                                                 <button class="btn btn-outline-danger btn-sm" onClick="document.getElementById('<?php echo "deleteModalS".$itemSurvey['survey_id']; ?>').style.display = 'block'">Delete</button>
                                             </td>
                                         </tr>
                                         <div id="<?php echo "deleteModalS".$itemSurvey['survey_id']; ?>" class="modal" tabindex="-1">
+=======
+                                                <button class="btn btn-outline-warning btn-sm" onClick="document.getElementById('<?php echo "editModalS".$itemSurvey['id']; ?>').style.display = 'block'">Edit</button>
+                                                <button class="btn btn-outline-danger btn-sm" onClick="document.getElementById('<?php echo "deleteModalS".$itemSurvey['id']; ?>').style.display = 'block'">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <div id="<?php echo "deleteModalS".$itemSurvey['id']; ?>" class="modal" tabindex="-1">
+>>>>>>> master
                                             <div class="modal-dialog ">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-danger text-white">
                                                         <h3 class="modal-title">Delete</h3>
+<<<<<<< HEAD
                                                         <button class="btn-close" onClick="document.getElementById('<?php echo "deleteModalS".$itemSurvey['survey_id']; ?>').style.display = 'none'"></button>
                                                     </div>
                                                     <div class="modal-body bg-warning" style="text-align:center;">
@@ -156,21 +172,42 @@
                                                                 Are you sure? 
                                                             </p>
                                                             <input type="hidden" name="_id" value="<?php echo $itemSurvey['survey_id'];?>">
+=======
+                                                        <button class="btn-close" onClick="document.getElementById('<?php echo "deleteModalS".$itemSurvey['id']; ?>').style.display = 'none'"></button>
+                                                    </div>
+                                                    <div class="modal-body bg-warning" style="text-align:center;">
+                                                        <form class="form" action="<?= base_url(); ?>/Pages/deleteSurvey/<?= $itemSurvey['id']; ?>" method="POST">
+                                                            <p>
+                                                                Are you sure? 
+                                                            </p>
+                                                            <input type="hidden" name="_id" value="<?php echo $itemSurvey['id'];?>">
+>>>>>>> master
                                                             <button type="submit" class="btn btn-block bg-danger text-white"> YES!</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>	
+<<<<<<< HEAD
                                         <div id="<?php echo "editModalS".$itemSurvey['survey_id']; ?>" class="modal" tabindex="-1">
+=======
+                                        <div id="<?php echo "editModalS".$itemSurvey['id']; ?>" class="modal" tabindex="-1">
+>>>>>>> master
                                             <div class="modal-dialog ">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-info text-white">
                                                         <h3 class="modal-title">Edit</h3>
+<<<<<<< HEAD
                                                         <button class="btn-close" onClick="document.getElementById('<?php echo "editModalS".$itemSurvey['survey_id']; ?>').style.display = 'none'"></button>
                                                     </div>
                                                     <div class="modal-body bg-light" style="text-align:center;">
                                                         <form class="form bg-light" action="<?php echo base_url(); ?>/Pages/editSurvey/<?= $itemSurvey['survey_id']; ?>" method="post">
+=======
+                                                        <button class="btn-close" onClick="document.getElementById('<?php echo "editModalS".$itemSurvey['id']; ?>').style.display = 'none'"></button>
+                                                    </div>
+                                                    <div class="modal-body bg-light" style="text-align:center;">
+                                                        <form class="form bg-light" action="<?php echo base_url(); ?>/Pages/editSurvey/<?= $itemSurvey['id']; ?>" method="post">
+>>>>>>> master
                                                             <select name="surveyTITLE" id="surveyTitle" class="form-control ">
                                                                 <?php 
                                                                     foreach($titles as $itemTitle):
@@ -264,6 +301,7 @@
                                                         $listAns = preg_split("/\n/", $itemSurvey['answer']);
                                                         $a = 1;
                                                         foreach($listAns as $option => $value):
+<<<<<<< HEAD
                                                             echo "<input type='hidden' name='optNameRadio' value='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."'>";
                                                             echo "<input type='hidden' name='optNameCheck' value='".$itemTitle['id']."s".$itemSurvey['id']."[]'>";
                                                             // Jika char pertama adalah simbol #, maka input radio menjadi input checkbox
@@ -282,6 +320,14 @@
                                                             elseif($value == NULL || $value == "") {
                                                                 echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."' class='form-inline'> Lain-lain:</input>"; 
                                                                 echo '<input type="text" name="ansOptOtherRadio" placeholder="Nyatakan" class="form-control" ><br>';
+=======
+                                                            echo "<input type='hidden' name='optName' value='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."'>";
+                                                            if($value != NULL || $value != ""){
+                                                                echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."'> ".$value."</input><br>";
+                                                            } else {
+                                                                echo "<input type='radio' name='ansOpt-t".$itemTitle['id']."s".$itemSurvey['id']."' value='".$a++."' class='form-inline'> Lain-lain:</input>"; 
+                                                                echo '<input type="text" name="ansOptOther" placeholder="Nyatakan" class="form-control" ><br>';
+>>>>>>> master
                                                             }
                                                         endforeach;
                                                         echo "<br>";
