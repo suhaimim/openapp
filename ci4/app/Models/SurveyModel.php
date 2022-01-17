@@ -18,10 +18,6 @@ class SurveyModel extends Model{
     public function getSurveys()
     {
         return $this->db->table("surveys")
-<<<<<<< HEAD
-                        ->select('*, surveys.id as survey_id')
-=======
->>>>>>> master
                         ->join('titles', 'surveys.title = titles.id')
                         ->get()->getResultArray();
     }
