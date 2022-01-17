@@ -13,3 +13,14 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/ci4/public/assets
+/ci4/vendor
+/ci4/writable
+/lara8/bootstrap
+/lara8/public
+/lara8/public/storage
+/lara8/storage
+/lara8/vendor
+
+
+
